@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>function</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <?php
-  $items = array ('item1.png','item2.png','item3.png', 'item4.png');
-  foreach ($items as $item) {
-    echo "<img src='images/$item' width=50px height=50px alt='$item'>";
+<?php
+$i=1;
+while($i<=10){
+    echo"dãy số là $i<br>";
+    $i++;
 }
+    echo "<form method='post' action='index.php'>";
+    $today = getdate();
+    $curyear = $today["year"];
+    echo "Ngày <select name='ngay'>";
 
-  ?>
-  <h1>Function<h1>
+    for($i=1; $i<=31; $i++){
+       echo " <option value='$i'>$i</option> ";
+    }
 
-  <?php
-  $items = array ("item5.png","item6.png");
-  foreach ($items as $item)
-  {
-    echo ("<img src ='images/$item' with = 50px height = 50px alt = '$item'>");
-  }
-   ?>
+    echo "</select> Tháng <select name='thang'>";
+
+    for($i=1; $i<=12; $i++){
+       echo " <option value='$i'>$i</option> ";
+    }
+
+    echo "</select> Năm <select name='nam'>";
+
+    for($i=1990; $i<=$curyear; $i++){
+       echo " <option value='$i'>$i</option> ";
+    }
+
+    echo "</select>";
+    echo "    <input type='submit' value='Xác Nhận'>";
+    echo "</form>";
+
+    if(isset($_POST["ngay"]) && isset($_POST["thang"]) && isset($_POST["nam"])){
+        $ngay = $_POST["ngay"];
+        $thang = $_POST["thang"];
+        $nam = $_POST["nam"];
+        echo "Bạn đã chọn ngày " . $ngay . " Tháng " . $thang . " năm " . $nam . " làm ngày cưới";
+    }
+?>
+
+
 </body>
 </html>
